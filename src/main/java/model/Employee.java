@@ -1,28 +1,33 @@
 package model;
 
+import javax.persistence.*;
 import java.util.Objects;
-
+@Entity
+@Table(name = "employee")
 public class Employee {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String firstName;
-    private String lastName;
-    private String gender;
-    private int age;
 
-    public Employee(int id, String firstName, String lastName, String gender, int age) {
+    @Column(name = "first_name")
+    private String firstName;
+    @Column (name = "last_name")
+    private String lastName;
+    @Column(name = "gender")
+    private String gender;
+    @Column(name = "age")
+    private int age;
+    @Column(name = "city_id")
+    private int cityId;
+
+
+    public Employee(int id, String firstName, String lastName, String gender, int age, int cityId) {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.gender = gender;
         this.age = age;
-    }
-
-    public Employee(String firstName, String lastName, String gender, int age) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.gender = gender;
-        this.age = age;
+        this.cityId = cityId;
     }
 
     public Employee() {
@@ -69,19 +74,6 @@ public class Employee {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Employee employee = (Employee) o;
-        return id == employee.id && age == employee.age && Objects.equals(firstName, employee.firstName) && Objects.equals(lastName, employee.lastName) && Objects.equals(gender, employee.gender);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, firstName, lastName, gender, age);
-    }
-
-    @Override
     public String toString() {
         return "Employee{" +
                 "id=" + id +
@@ -89,6 +81,7 @@ public class Employee {
                 ", lastName='" + lastName + '\'' +
                 ", gender='" + gender + '\'' +
                 ", age=" + age +
+                ", cityId=" + cityId +
                 '}';
     }
 }
