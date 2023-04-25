@@ -15,9 +15,9 @@ public interface EmployeeDAO {
     // Получение всех объектов
     List<Employee> getAllEmployees();
 
-    // Изменение объекта по id
-    void updateById(int id, Employee employee);
+    // Изменение объекта
+    void updateEmployee(Employee employee);
 
-    // Удаление объекта по id
-    void deleteById(int id);
+    // Удаление объекта
+    void deleteEmployee(Employee employee);
 }
